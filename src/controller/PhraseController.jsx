@@ -1,39 +1,35 @@
-import PhraseService from "../services/PhraseServices";
+import PhraseService from '../services/PhraseServices';
 
 function PhraseController() {
+  const { GetPhrases, CreatePhrase, UpdatePhraseById, DeletePhraseById } =
+    PhraseService;
 
-    const { GetPhrases, CreatePhrase, UpdatePhraseById, DeletePhraseById } = PhraseService;
+  this.Create = async function (bodyPhrase) {
+    const newPhrase = await CreatePhrase(bodyPhrase);
 
-    this.Create = async function (bodyPhrase) {
+    return newPhrase;
+  };
 
-        const newPhrase = await CreatePhrase(bodyPhrase);
+  this.Read = async function () {
+    const phrases = await GetPhrases();
+    console.log('controler', phrases);
 
-        return newPhrase;
-    }
+    return phrases;
+  };
 
-    this.Read = async function () {
+  this.Edit = async function (idPhrase, bodyPhrase) {
+    const updatedPhrase = await UpdatePhraseById(idPhrase, bodyPhrase);
 
-        const phrases = await GetPhrases();
-        console.log("controler", phrases)
+    return updatedPhrase;
+  };
 
-        return phrases;
-    }
+  this.Delete = async function (idPhrase) {
+    const hasDeletedPhrase = await DeletePhraseById(idPhrase);
 
-    this.Edit = async function (idPhrase, bodyPhrase) {
-
-        const updatedPhrase = await UpdatePhraseById(idPhrase, bodyPhrase);
-
-        return updatedPhrase;
-    }
-
-    this.Delete = async function (idPhrase) {
-
-        const hasDeletedPhrase = await DeletePhraseById(idPhrase);
-
-        return hasDeletedPhrase;
-    }
+    return hasDeletedPhrase;
+  };
 }
 
-const phraseController = new PhraseController()
+const phraseController = new PhraseController();
 
 export default phraseController;

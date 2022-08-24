@@ -1,25 +1,24 @@
-import { useState, useEffect } from "react";
-import PhraseController from "../controller/PhraseController";
+import { useState, useEffect } from 'react';
+import PhraseController from '../controller/PhraseController';
 
-import Item from "./Item";
+import Item from './Item';
 
 export default function Todo() {
   const { Read, Create } = PhraseController;
 
   const [phrases, setPhrases] = useState([]);
   const [newPhrase, setNewPhrase] = useState(null);
-  
 
   const getAll = async () => {
     const response = await Read();
     setPhrases(response.phrases);
-    console.log("getAll", response.phrases);
+    console.log('getAll', response.phrases);
   };
 
   useEffect(() => {
     getAll();
   }, []);
-  console.log("state", phrases);
+  console.log('state', phrases);
 
   return (
     <>
@@ -36,7 +35,7 @@ export default function Todo() {
         {/*phrases.map((phrase, index) => (<li key={`list-item-${index}`}><Item phrase={phrase} /></li>))*/}
         {phrases.map((phrase, index) => (
           <li key={`list-item-${index}`}>
-            <Item  phrase={phrase.text} id={phrase._id} />
+            <Item phrase={phrase.text} id={phrase._id} />
           </li>
         ))}
       </ul>

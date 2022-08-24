@@ -1,4 +1,4 @@
-import Todo from "./components/Home";
+import Todo from './components/Home';
 function App() {
   return (
     <div className="App">

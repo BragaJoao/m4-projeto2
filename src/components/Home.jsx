@@ -8,6 +8,7 @@ export default function Todo() {
 
   const [phrases, setPhrases] = useState([]);
   const [newPhrase, setNewPhrase] = useState(null);
+  
 
   const getAll = async () => {
     const response = await Read();

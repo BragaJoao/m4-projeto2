@@ -29,6 +29,7 @@ function PhraseService(baseUrl) {
     }
   
     this.UpdatePhraseById = async function(idPhrase, newBodyPhrase){
+      console.log(newBodyPhrase)
       const bodyConfig = {
           method: 'PUT',
           body: JSON.stringify(newBodyPhrase),
@@ -36,13 +37,17 @@ function PhraseService(baseUrl) {
               'Content-type': 'application/json; charset=UTF-8'
           }
       }
-      const response = await fetch(`${baseUrl}, ${idPhrase}`, bodyConfig)
+      const response = await fetch(`${baseUrl}/${idPhrase}`, bodyConfig)
       const updatedPhrase = await response.json();
       return updatedPhrase
     }
   
     this.DeletePhraseById = async function (idPhrase) {
-      return response.ok
+      const bodyConfig ={
+        method: 'DELETE'
+      }
+      const response = await fetch( `${baseUrl}/${idPhrase} `, bodyConfig)
+        return response.ok
     }
   }
   

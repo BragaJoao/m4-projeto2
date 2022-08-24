@@ -32,7 +32,6 @@ export default function Todo() {
         <button onClick={() => Create(newPhrase)}>+</button>
       </div>
       <ul>
-        {/*phrases.map((phrase, index) => (<li key={`list-item-${index}`}><Item phrase={phrase} /></li>))*/}
         {phrases.map((phrase, index) => (
           <li key={`list-item-${index}`}>
             <Item phrase={phrase.text} id={phrase._id} />
